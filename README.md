@@ -1,15 +1,15 @@
 # Scenario Autocompletion Service
-This project is an microservice application to provide autocompletion of user scenario. That is, for every action given by user, the microservice predicts which will be the final action to be taken or required by the service. The project is also accompanied with a training environment.
+This project is an microservice application to provide autocompletion of user scenario. For every action given by user, such as typing a key, the microservice predicts which action will be eventually given to the user. The project is also accompanied with a training environment.
 
 # Dependencies
 - python >= 3.8.0
 
-# Getting started
-- (how to install)
-
 ```
 flask >= 1.1.1
 ```
+
+# Getting started
+- (how to install)
 
 ## How it works?
 ### In the data collection time
