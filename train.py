@@ -1,3 +1,26 @@
+from __future__ import absolute_import
+from __future__ import division
+from __future__ import print_function
+from __future__ import unicode_literals
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+import neural_structured_learning as nsl
+
+import tensorflow as tf
+tf.compat.v1.enable_v2_behavior()
+
+import tensorflow_hub as hub
+
+# Resets notebook state
+tf.keras.backend.clear_session()
+
+print("Version: ", tf.__version__)
+print("Eager mode: ", tf.executing_eagerly())
+print("Hub version: ", hub.__version__)
+print("GPU is", "available" if tf.test.is_gpu_available() else "NOT AVAILABLE")
+
 # Step1: Load data
 # connect to database or whatever storage
 
