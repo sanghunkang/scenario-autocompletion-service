@@ -1,4 +1,6 @@
 from flask import Flask
+from data_saver import save_data
+
 app = Flask(__name__)
 
 @app.route('/')
@@ -19,4 +21,9 @@ def get_prediction():
 
 @app.route('/add_record')
 def add_record():
-    return 'Hello, World!'
+    try:
+        save_data()
+        return "ok"
+    except:
+        return "internal server error"
+        
