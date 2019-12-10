@@ -39,6 +39,11 @@ layer2 = tf.LSTM(layer1) # Non linearity?
 z = tf.FullyConnected(layer2) # ...which is the weighted(weight trained during traintime) sum
 pred = tf.logit(z)
 
+@tf.function
+def stacked_encoder(x, w0, b0, w1, b1, w2, b2):
+    X = tf.LSTM(embedding)      # encoder layer 1
+    X = tf.LSTM(embedding)      # encoder layer 2
+
 # Step2-2: Calculate cost
 optimizer = tf.keras.optimizers.Adam()
 loss_object = tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True, reduction='none')
@@ -51,6 +56,8 @@ loss_ *= mask
 tf.reduce_mean(loss_)
 
 # Step2-3: Run Traing
-
+c = lambda i: tf.less(i, 10)
+b = lambda i: tf.add(i, 1)
+r = tf.while_loop(c, b, [i])
 
 # Step3: Save model somewhere
