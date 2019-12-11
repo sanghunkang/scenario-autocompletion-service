@@ -33,16 +33,24 @@ print("GPU is", "available" if tf.test.is_gpu_available() else "NOT AVAILABLE")
 X, y # sampled, sliced(?) set of records, last token(?) being y
 
 # Step2-1: Model Architecture a seq2seq model
-embedding = tf.EmbeddingLookup(X) # Where to store embedding? Is it necessary?
-layer1 = tf.LSTM(embedding) # Non linearity?
-layer2 = tf.LSTM(layer1) # Non linearity?
+ # Where to store embedding? Is it necessary?
+def lookup(X):
+    X = tf.EmbeddingLookup(X)
+    return X
+
+def stacked_encoder(X, w0, b0, w1, b1, w2, b2):
+    X = tf.LSTM(X)      # encoder layer 1
+    X = tf.LSTM(X)      # encoder layer 2
+    return X
+
 z = tf.FullyConnected(layer2) # ...which is the weighted(weight trained during traintime) sum
 pred = tf.logit(z)
 
 @tf.function
-def stacked_encoder(x, w0, b0, w1, b1, w2, b2):
-    X = tf.LSTM(embedding)      # encoder layer 1
-    X = tf.LSTM(embedding)      # encoder layer 2
+def forward_path(X):
+    X = lookup(X)
+    X = stacked_encoder(X)
+
 
 # Step2-2: Calculate cost
 optimizer = tf.keras.optimizers.Adam()
