@@ -25,3 +25,20 @@ flask >= 1.1.1
 - Whenever keyboard input is detected from the browser, the browser sends an HTTP request
 - The sequence detected thus far are input into the model and an action is predicted
 - The service returns the action with highest confidence(?) as the response
+
+
+
+
+
+
+
+
+
+APP
+- Service Env
+
+- Train Env
+    - load data
+    
+
+    - push model

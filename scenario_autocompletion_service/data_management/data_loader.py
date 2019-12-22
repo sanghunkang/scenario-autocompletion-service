@@ -8,7 +8,7 @@ def load_data(dataset_name):
     if dataset_name == "nlu_benchmark":
         return load_data_nlu_benchmark()    
     elif dataset_name == "<OTHER DATASET>":
-        return ...
+        return None
     else:
         raise Exception("Unprepared dataset")
 
@@ -18,7 +18,7 @@ def load_data_nlu_benchmark():
         records = json.loads(f.read())["sentences"]
         for record in records:
             # print(json.dumps(record, indent=2))
-            print(record["intent"],  "<<< ",record["text"])
+            print(record["training"], ":", record["intent"],  "<<<", record["text"])
 
     # Remove unneccessary parts
 
